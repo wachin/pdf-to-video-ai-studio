@@ -1,30 +1,4 @@
-# AGENTS.md — Reglas para desarrollo de pdf-to-video-ai
-
-## Regla obligatoria: Dependencias faltantes
-
-**NUNCA instales paquetes automáticamente.** Si falta una dependencia:
-
-1. **Detén el proceso inmediatamente**
-2. **Comunica al desarrollador** exactamente qué paquete falta y por qué se necesita
-3. **Espera confirmación** del desarrollador antes de continuar
-
-### Formato de notificación:
-
-```
-⚠️ DEPENDENCIA FALTANTE
-Paquete: <nombre_del_paquete>
-Razón: <por qué se necesita / qué funcionalidad habilita>
-Comando sugerido: <comando para instalar>
-```
-
-### Ejemplo:
-
-```
-⚠️ DEPENDENCIA FALTANTE
-Paquete: pysrt
-Razón: Necesario para generar subtítulos SRT robustos (reemplaza implementación manual frágil)
-Comando sugerido: pip install pysrt
-```
+# AGENTS.md — Reglas para desarrollo de pdf-to-video-ai-studio
 
 ---
 
@@ -101,3 +75,17 @@ El pipeline genera correctamente:
 | srt/pysrt | Migrar implementación manual a `pysrt` |
 | Babel/i18n | `babel.cfg`, `init_i18n()` antes de parser |
 | PyYAML | `pydantic-settings` para config tipada |
+
+---
+
+## Regla: Submódulos de datos (no librerías)
+
+Los submódulos git en `third-party/` **NO son librerías de código**. Son carpetas donde el usuario colocará documentos PDF de becas para que el pipeline los procese y genere videos.
+
+- **No instales dependencias** desde estos submódulos
+- **No importes código** desde estos submódulos
+- **Solo lee archivos PDF, docx, txt** que el usuario haya colocado allí
+- La estructura esperada es: `third-party/<nombre-repo>/*.pdf;*.docx:*.txt`
+
+Ejemplo actual:
+- `third-party/202609-Ecuador-Becas-4to-nivel/` → PDFs de becas de 4to nivel de Ecuador (septiembre 2026).

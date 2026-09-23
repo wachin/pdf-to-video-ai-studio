@@ -1,0 +1,3 @@
+[submodule "third-party/202609-Ecuador-Becas-4to-nivel"]
+	path = third-party/202609-Ecuador-Becas-4to-nivel
+	url = https://github.com/wachin/202609-Ecuador-Becas-4to-nivel
