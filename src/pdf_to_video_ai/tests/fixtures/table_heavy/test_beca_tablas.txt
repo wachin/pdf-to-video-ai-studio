@@ -1,0 +1,62 @@
+Beca de Excelencia Técnica - Tabla de Requisitos por Carrera
+==============================================================
+
+INFORMACIÓN GENERAL
+-------------------
+Beca: Beca de Excelencia Técnica 2025
+Institución: SENESCYT
+Modalidad: Presencial / Híbrida
+Duración: 2 años (máster) / 4 años (doctorado)
+
+REQUISITOS POR CARRERA
+----------------------
+La siguiente tabla muestra los requisitos mínimos diferenciados por área de estudio:
+
+| Área de Estudio        | Promedio Mínimo | Idioma Requerido | Experiencia Laboral | Documentos Adicionales           |
+|------------------------|-----------------|------------------|---------------------|----------------------------------|
+| Ingeniería Civil       | 8.5/10          | Inglés B2        | 1 año               | Portafolio de proyectos          |
+| Ciencias de la Computación | 8.0/10       | Inglés B2        | 6 meses             | Certificaciones técnicas         |
+| Biotecnología          | 8.5/10          | Inglés C1        | 1 año               | Publicaciones (deseable)         |
+| Medicina               | 9.0/10          | Inglés B2        | 2 años (residencia) | Título de especialista           |
+| Arquitectura           | 8.0/10          | Inglés B1        | 1 año               | Portafolio de diseños            |
+| Ciencias Ambientales   | 8.0/10          | Inglés B2        | 1 año               | Certificado de voluntariado      |
+| Economía/Finanzas      | 8.5/10          | Inglés C1        | 1 año               | Certificados financieros (CFA)   |
+
+NOTA: Los promedios son sobre 10. Los niveles de idioma siguen el MCER.
+
+FINANCIAMIENTO DETALLADO
+------------------------
+| Concepto                    | Máster (USD/año) | Doctorado (USD/año) | Observaciones                    |
+|-----------------------------|------------------|---------------------|----------------------------------|
+| Matrícula y aranceles       | 20,000           | 25,000              | Pago directo a universidad       |
+| Estipendio mensual          | 1,200 x 12       | 1,500 x 12          | Transferencia mensual            |
+| Seguro médico internacional | 2,000            | 2,500               | Cobertura 100%                   |
+| Pasajes aéreos (ida/vuelta) | 2,500            | 3,000               | Clase económica                  |
+| Materiales y libros         | 1,000            | 1,500               | Reembolso con facturas           |
+| Conferencia anual           | 3,000            | 5,000               | Presentación de resultados       |
+| **TOTAL ANUAL APROX.**      | **29,700**       | **38,500**          |                                  |
+
+CRONOGRAMA DE CONVOCATORIA
+--------------------------
+| Fase                              | Fecha Inicio | Fecha Fin   | Responsable     |
+|-----------------------------------|--------------|-------------|-----------------|
+| Publicación de bases              | 01/01/2025   | 01/01/2025  | SENESCYT        |
+| Período de inscripciones          | 15/01/2025   | 31/03/2025  | Postulantes     |
+| Verificación documental           | 01/04/2025   | 15/04/2025  | Comité Técnico  |
+| Evaluación de méritos             | 16/04/2025   | 31/05/2025  | Jurado Externo  |
+| Entrevistas (finalistas)          | 01/06/2025   | 15/06/2025  | Jurado Externo  |
+| Publicación de resultados         | 30/06/2025   | 30/06/2025  | SENESCYT        |
+| Suscripción de becas              | 01/07/2025   | 15/07/2025  | Ganadores       |
+| Inicio de estudios                | Según universidad |        | Becarios        |
+
+CONTACTO Y ENLACES
+------------------
+- Web oficial: https://www.senescyt.gob.ec/becas/excelencia-tecnica
+- Email: excelencia-tecnica@senescyt.gob.ec
+- Teléfono: +593 2 345 6789 (ext. 123)
+- WhatsApp: +593 99 123 4567
+- Preguntas frecuentes: https://www.senescyt.gob.ec/faq/becas
+
+---
+Documento de referencia para pruebas de extracción de tablas.
+Generado: 2025-01-15

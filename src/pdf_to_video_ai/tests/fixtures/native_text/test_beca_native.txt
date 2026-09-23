@@ -1,0 +1,51 @@
+# Beca de Prueba - Texto Nativo PDF
+# Este es un documento de prueba para validar extracción de PDF nativo
+
+## Información General
+
+**Nombre de la beca:** Beca Internacional de Excelencia Académica
+**Institución:** Universidad de Ejemplo
+**País:** España
+**Nivel:** Máster / Doctorado
+
+## Requisitos de Elegibilidad
+
+1. Ser ciudadano ecuatoriano o residente legal
+2. Tener título de tercer nivel registrado en SENESCYT
+3. Promedio académico mínimo de 8.5/10
+4. Dominio de idioma inglés (TOEFL iBT ≥ 90 o IELTS ≥ 6.5)
+5. Carta de aceptación de universidad extranjera
+
+## Fechas Importantes
+
+- **Apertura de convocatoria:** 15 de enero de 2025
+- **Cierre de postulaciones:** 31 de marzo de 2025
+- **Publicación de resultados:** 15 de mayo de 2025
+
+## Financiamiento
+
+- **Matrícula:** 100% cubierta (hasta $25,000 USD/año)
+- **Estipendio mensual:** $1,200 USD
+- **Seguro médico:** Cobertura internacional
+- **Pasajes aéreos:** Ida y vuelta (máx. $1,500 USD)
+
+## Proceso de Postulación
+
+1. Registrarse en la plataforma: https://becas.ejemplo.gob.ec
+2. Completar formulario en línea
+3. Subir documentos requeridos:
+   - Título profesional (PDF)
+   - Certificado de notas (PDF)
+   - Certificado de idioma (PDF)
+   - Carta de motivación (máx. 500 palabras)
+   - Dos cartas de referencia
+4. Enviar antes de la fecha límite
+
+## Contacto
+
+**Email:** becas@ejemplo.gob.ec
+**Teléfono:** +593 2 123 4567
+**Dirección:** Av. Principal 123, Quito, Ecuador
+
+---
+*Documento generado automáticamente para pruebas*

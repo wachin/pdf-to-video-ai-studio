@@ -1,0 +1,118 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-09-22 15:06-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: src/pdf_to_video_ai/cli.py:17
+#, python-brace-format
+msgid "Pipeline completed for {name}"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:18
+#, python-brace-format
+msgid "Output dir: {path}"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:19
+#, python-brace-format
+msgid "Markdown: {path}"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:39
+#, python-brace-format
+msgid "No scholarship folders found in {path}"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:42
+#, python-brace-format
+msgid "Found {count} scholarship folders"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:45
+#, python-brace-format
+msgid "[{current}/{total}] Processing: {name}"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:49
+#, python-brace-format
+msgid "  Done: {path}"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:51
+#, python-brace-format
+msgid "  ERROR: {error}"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:64
+#, python-brace-format
+msgid "Document JSON not found at {path}"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:71
+#, python-brace-format
+msgid "Validation completed: {count} issues"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:73
+#, python-brace-format
+msgid "  [{level}] {code}: {message}"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:87
+msgid "Generate narrated videos for scholarships"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:88
+msgid "Path to config.yaml"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:89
+msgid "Force language (e.g., en, es)"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:92
+msgid "Generate video for a folder"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:93 src/pdf_to_video_ai/cli.py:103
+msgid "Path to scholarship folder"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:94 src/pdf_to_video_ai/cli.py:99
+msgid "Output directory"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:97
+msgid "Batch generate for all scholarships"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:98
+msgid "Root folder with scholarship folders"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:102
+msgid "Validate content"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:104
+msgid "Output directory (optional)"
+msgstr ""
+
+#: src/pdf_to_video_ai/cli.py:107
+msgid "Show version"
+msgstr ""
+

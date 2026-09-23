@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-to-video-ai"
+version = "0.1.0"
+description = "Generate narrated Full HD videos from scholarship PDFs"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "PyYAML>=6.0",
+    "pillow>=10.0",
+    "beautifulsoup4>=4.12",
+    "markdownify>=0.11",
+    "python-docx>=1.1",
+    "lxml>=5.0",
+    "edge-tts>=7.0",
+    "pydantic-settings>=2.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[project.scripts]
+pdf-to-video-ai = "pdf_to_video_ai.cli:main"

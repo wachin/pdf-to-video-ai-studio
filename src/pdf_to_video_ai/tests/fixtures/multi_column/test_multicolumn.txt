@@ -1,0 +1,25 @@
+# Multi-Column Layout Test Document
+
+## COLUMNA IZQUIERDA                          ## COLUMNA DERECHA
+
+**Requisitos Académicos**                      **Requisitos Administrativos**
+• Título de tercer nivel registrado            • Formulario de inscripción completo
+• Promedio mínimo 8.5/10                       • Copia de cédula/identidad
+• Certificado de notas oficial                 • Certificado de votación
+• Ranking universitario (si aplica)            • Planilla de depósito (\$25)
+
+**Idiomas**                                    **Documentos de Apoyo**
+• Inglés: TOEFL iBT ≥ 90                       • Carta de motivación (500 palabras)
+• O IELTS ≥ 6.5                                • 2 cartas de referencia académica
+• Certificado vigente (máx. 2 años)            • CV actualizado (máx. 3 páginas)
+
+**Experiencia**                                **Compromisos**
+• Mínimo 1 año relacionado                     • Regreso al Ecuador obligatorio
+• Certificados laborales                       • Servicio comunitario (100 hrs)
+• Proyectos publicados (deseable)              • Informe final de estudios
+
+---
+FECHAS CLAVE                                   CONTACTO
+• Apertura: 01/02/2025                         • Email: becas@ejemplo.gob.ec
+• Cierre: 30/04/2025                           • Web: www.ejemplo.gob.ec/becas
+• Resultados: 15/06/2025                       • Tel: +593 2 123 4567

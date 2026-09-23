@@ -1,0 +1,2 @@
+[console_scripts]
+pdf-to-video-ai = pdf_to_video_ai.cli:main

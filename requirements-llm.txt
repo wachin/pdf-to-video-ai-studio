@@ -1,0 +1,3 @@
+# Optional LLM installation
+# For llama-cpp-python (CPU inference)
+llama-cpp-python>=0.2.90

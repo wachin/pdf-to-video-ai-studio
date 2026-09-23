@@ -1,0 +1,17 @@
+duracion_maxima_seg: 45
+idioma: es
+ocr:
+  dpi: 300
+  habilitado: true
+  idioma: es
+orientaciones:
+- vertical
+palabras_por_segundo: 2.8
+subtitulos:
+  burn_in: false
+  enabled: true
+  estilo: default
+voz:
+  name: es-ES-ElviraNeural
+  rate: +0%
+  volume: +0dB
