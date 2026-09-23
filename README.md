@@ -59,7 +59,9 @@ ollama pull phi3:mini
 **Every time you use the program:**
 ```bash
 source .venv/bin/activate
-python -m pdf_to_video_ai.cli generar "/third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/2026-0435/" --salida salidas/
+
+python -m pdf_to_video_ai.cli generar "/third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/" --salida salidas/
+
 deactivate
 ```
 
@@ -90,7 +92,7 @@ ollama pull phi3:mini
 **Every time you use the program:**
 ```bash
 source .venv/bin/activate
-python -m pdf_to_video_ai.cli generar "/third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/2026-0435/" --salida salidas/
+python -m pdf_to_video_ai.cli generar "third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/2026-0435/" --salida salidas/
 deactivate
 ```
 
@@ -154,7 +156,7 @@ source .venv/bin/activate  # Linux/macOS
 .\.venv\Scripts\activate   # Windows
 
 # Generate video
-python -m pdf_to_video_ai.cli generar "/third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/2026-0435/" --salida salidas/
+python -m pdf_to_video_ai.cli generar "third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/2026-0435/" --salida salidas/
 
 # When finished
 deactivate
