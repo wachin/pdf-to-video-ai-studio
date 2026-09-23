@@ -60,7 +60,7 @@ ollama pull phi3:mini
 ```bash
 source .venv/bin/activate
 
-python -m pdf_to_video_ai.cli generar "/third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/" --salida salidas/
+python -m pdf_to_video_ai.cli generar "third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/" --salida salidas/
 
 deactivate
 ```
