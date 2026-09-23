@@ -21,6 +21,7 @@ salidas/
 *.avi
 *.mov
 *.mkv
+*.mp3
 
 # Jupyter notebook
 ipynb_checkpoints/
