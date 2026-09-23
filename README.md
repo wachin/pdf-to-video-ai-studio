@@ -27,124 +27,140 @@ This project transforms scholarship documents into narrated Full HD videos suita
 
 ---
 
-## Quick Start
-
-```bash
-# 1. Install dependencies
-pip install -r requirements.txt
-
-# 2. Install the package in editable mode
-pip install -e .
-
-# 3. Generate a video for a single scholarship
-python -m pdf_to_video_ai.cli generar /ruta/a/beca --salida salidas/
-
-# 4. Or process all scholarships in a batch
-python -m pdf_to_video_ai.cli lote /ruta/raíz/becas --salida salidas/
-```
-
----
-
 ## Installation
 
-### System dependencies (one‑time)
+### Linux
+
+**First installation (one time only):**
 
 ```bash
+# System dependencies
 sudo apt update && sudo apt install -y \
     python3 python3-venv python3-pip \
     ffmpeg libreoffice \
     poppler-utils
-```
 
-### Python environment
-
-```bash
-# Create and activate the virtual environment
+# Create and activate virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
 
-# Upgrade pip
+# Upgrade pip and install dependencies
 pip install --upgrade pip
-
-# Install core dependencies
 pip install -r requirements.txt
-
-# Optional: OCR support (scanned PDFs / images)
-pip install -r requirements-ocr.txt
-
-# Install the package in editable mode
+pip install -r requirements-ocr.txt  # Optional: OCR support for scanned PDFs
 pip install -e .
-```
 
-### Optional local LLM (Ollama)
-
-```bash
-# Install Ollama
+# Install Ollama (optional, for local LLM)
 curl -fsSL https://ollama.ai/install.sh | sh
 ollama serve &
-
-# Pull a small model
 ollama pull phi3:mini
 ```
 
-Then enable in `config.yaml`:
-```yaml
-llm:
-  enabled: true
-  provider: "ollama"
-  model: "phi3:mini"
+**Every time you use the program:**
+```bash
+source .venv/bin/activate
+python -m pdf_to_video_ai.cli generar "/third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/2026-0435/" --salida salidas/
+deactivate
+```
+
+### macOS
+
+**First installation (one time only):**
+
+```bash
+# Install system dependencies with Homebrew
+brew install python3 ffmpeg libreoffice poppler
+
+# Create and activate virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Upgrade pip and install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install -r requirements-ocr.txt  # Optional: OCR support for scanned PDFs
+pip install -e .
+
+# Install Ollama (optional, for local LLM)
+curl -fsSL https://ollama.ai/install.sh | sh
+ollama serve &
+ollama pull phi3:mini
+```
+
+**Every time you use the program:**
+```bash
+source .venv/bin/activate
+python -m pdf_to_video_ai.cli generar "/third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/2026-0435/" --salida salidas/
+deactivate
+```
+
+### Windows
+
+**First installation (one time only):**
+
+```powershell
+# Install Python 3.11+ from https://www.python.org/downloads/
+# Install FFmpeg from https://www.ffmpeg.org/download.html
+# Install LibreOffice from https://www.libreoffice.org/download/
+
+# Create and activate virtual environment
+python -m venv .venv
+.\.venv\Scripts\activate
+
+# Upgrade pip and install dependencies
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+pip install -r requirements-ocr.txt  # Optional: OCR support for scanned PDFs
+pip install -e .
+
+# Install Ollama (optional, for local LLM)
+# Download from https://ollama.ai/download/windows
+# Run Ollama, then in PowerShell:
+ollama pull phi3:mini
+```
+
+**Every time you use the program:**
+```powershell
+.\.venv\Scripts\activate
+python -m pdf_to_video_ai.cli generar "C:\ruta\a\becas\202609-Ecuador-Becas-4to-nivel\02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027\2026-0435\" --salida salidas\
+deactivate
 ```
 
 ---
 
 ## Usage
 
-### Every time you want to run the program:
-
-#### Linux / macOS
+### Basic Commands
 
 ```bash
-source .venv/bin/activate
+# Generate video for a single scholarship
+python -m pdf_to_video_ai.cli generar "/ruta/a/beca" --salida salidas/
 
-# Single scholarship
-python -m pdf_to_video_ai.cli generar "/20260921-Beca-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/2026-0435/" --salida salidas/
-
-# Batch process all scholarships
+# Process all scholarships in batch
 python -m pdf_to_video_ai.cli lote /ruta/raíz/becas --salida salidas/
 
-# Validate content only
+# Validate content without generating video
 python -m pdf_to_video_ai.cli validar /ruta/a/beca
 
 # Show version
 python -m pdf_to_video_ai.cli version
-
-# Deactivate when done
-deactivate
 ```
 
-#### Windows
+### Complete Example
 
-```powershell
-.\.venv\Scripts\activate
+```bash
+# Activate virtual environment (every time)
+source .venv/bin/activate  # Linux/macOS
+.\.venv\Scripts\activate   # Windows
 
-# Single scholarship
-python -m pdf_to_video_ai.cli generar C:\ruta\a\beca --salida salidas\
+# Generate video
+python -m pdf_to_video_ai.cli generar "/third-party/202609-Ecuador-Becas-4to-nivel/02 Becas Internacio par de Doctorado x U Americana de Europa UNADE. 1er Semes 2027/2026-0435/" --salida salidas/
 
-# Batch
-python -m pdf_to_video_ai.cli lote C:\ruta\raíz\becas --salida salidas\
-
-# Validate
-python -m pdf_to_video_ai.cli validar C:\ruta\a\beca
-
-# Version
-python -m pdf_to_video_ai.cli version
-
-# Deactivate
+# When finished
 deactivate
 ```
 
 ---
-
 ## Output Structure
 
 For each scholarship folder the program generates:
