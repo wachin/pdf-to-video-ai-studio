@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import List, Optional
 
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource
@@ -53,19 +52,19 @@ class Config(BaseSettings):
         extra="ignore",
     )
 
-    voz: "VozConfig" = Field(default_factory=lambda: VozConfig())
+    voz: VozConfig = Field(default_factory=lambda: VozConfig())
     idioma: str = "es"
     plantilla: str = "src/templates/default"
     duracion_maxima_seg: int = Field(default=45, ge=10, le=300)
     palabras_por_segundo: float = Field(default=2.8, gt=0.5, le=10.0)
-    subtitulos: "SubtitulosConfig" = Field(default_factory=lambda: SubtitulosConfig())
-    orientaciones: List[str] = Field(default_factory=lambda: ["vertical"])
-    musica_fondo: Optional[str] = None
+    subtitulos: SubtitulosConfig = Field(default_factory=lambda: SubtitulosConfig())
+    orientaciones: list[str] = Field(default_factory=lambda: ["vertical"])
+    musica_fondo: str | None = None
     musica_volumen: str = "-20dB"
-    ocr: "OcrConfig" = Field(default_factory=lambda: OcrConfig())
-    salida: "SalidaConfig" = Field(default_factory=lambda: SalidaConfig())
-    logs: "LogsConfig" = Field(default_factory=lambda: LogsConfig())
-    llm: "LlmConfig" = Field(default_factory=lambda: LlmConfig())
+    ocr: OcrConfig = Field(default_factory=lambda: OcrConfig())
+    salida: SalidaConfig = Field(default_factory=lambda: SalidaConfig())
+    logs: LogsConfig = Field(default_factory=lambda: LogsConfig())
+    llm: LlmConfig = Field(default_factory=lambda: LlmConfig())
 
     @field_validator("orientaciones", mode="before")
     @classmethod
@@ -94,12 +93,12 @@ class Config(BaseSettings):
         )
 
     @classmethod
-    def _get_yaml_path(cls) -> Optional[str]:
+    def _get_yaml_path(cls) -> str | None:
         path = Path(__file__).parent.parent / "config.yaml"
         return str(path) if path.exists() else None
 
 
-def load_config(path: Path | None = None) -> "Config":
+def load_config(path: Path | None = None) -> Config:
     """Load configuration from YAML file with validation."""
     if path is None:
         path = Path(__file__).parent.parent / "config.yaml"

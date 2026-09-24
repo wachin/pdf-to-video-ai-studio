@@ -163,7 +163,7 @@ def doc_a_md(ruta: Path) -> str:
 
 def html_a_md(ruta: Path) -> str:
     from bs4 import BeautifulSoup, UnicodeDammit
-    from markdownify import MarkdownConverter, ATX
+    from markdownify import ATX, MarkdownConverter
 
     # Read raw bytes and handle mixed encodings with detwingle
     raw_bytes = ruta.read_bytes()

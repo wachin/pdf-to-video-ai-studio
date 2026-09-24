@@ -3,15 +3,16 @@ from __future__ import annotations
 import asyncio
 import json
 from pathlib import Path
+
 from .config import Config
 from .extractor_canonical_folder import extract_folder_to_document
-from .guion_model import document_to_script, ScriptBlock
-from .slides import render_slide
-from .tts import synthesize
-from .video import assemble_both_orientations, VERTICAL, HORIZONTAL
-from .subtitles import generate_subtitles_from_word_boundaries
-from .validation import validate_document, validate_script, write_validation_report
+from .guion_model import ScriptBlock, document_to_script
 from .llm import enhance_script_block, generate_intro_outro
+from .slides import render_slide
+from .subtitles import generate_subtitles_from_word_boundaries
+from .tts import synthesize
+from .validation import validate_document, validate_script, write_validation_report
+from .video import HORIZONTAL, VERTICAL, assemble_both_orientations
 
 
 def document_to_markdown(doc) -> str:
@@ -23,6 +24,10 @@ def document_to_markdown(doc) -> str:
                 lines.append(f"{prefix}{elem.text}")
             elif elem.element_type == "Table":
                 lines.append(elem.text)
+            elif elem.element_type == "Formula":
+                lines.append(f"$${elem.text}$$")
+            elif elem.element_type == "Chart":
+                lines.append(f"![{elem.text}](chart_image)")
     return "\n\n".join(lines)
 
 
@@ -185,7 +190,6 @@ def process_folder(carpeta: Path, salida_dir: Path, config: Config) -> Path:
     (salida_dir / "script.txt").write_text("\n\n".join(b.text_narrated for b in final_blocks), encoding="utf-8")
 
     # Generate subtitles from word boundaries (word-level timing)
-    from .subtitles import generate_subtitles_from_word_boundaries
     srt_path = salida_dir / "subtitles.srt"
     try:
         generate_subtitles_from_word_boundaries(audio_dir, final_blocks, srt_path)
@@ -194,7 +198,9 @@ def process_folder(carpeta: Path, salida_dir: Path, config: Config) -> Path:
         print(f"Subtitle generation failed: {e}")
 
     # Validate document and script (after LLM transformation)
-    from .validation import validate_document, validate_script, validate_script_facts, write_validation_report
+    from .validation import (
+        validate_script_facts,
+    )
     doc_issues = validate_document(doc_json)
     script_issues = validate_script(script_json)
     fact_issues = validate_script_facts(script_json, doc_json)
@@ -204,7 +210,6 @@ def process_folder(carpeta: Path, salida_dir: Path, config: Config) -> Path:
     print(f"Validation completed: {len(all_issues)} issues found. Report: {report_path}.txt")
 
     # Assemble video with multiple orientations using final_blocks
-    from .video import assemble_both_orientations, VERTICAL, HORIZONTAL
     orient_list = [VERTICAL]
     if getattr(config, 'orientaciones', None) and 'horizontal' in config.orientaciones:
         orient_list.append(HORIZONTAL)

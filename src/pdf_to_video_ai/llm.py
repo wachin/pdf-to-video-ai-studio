@@ -1,9 +1,7 @@
 from __future__ import annotations
 
-import os
 import json
 from dataclasses import dataclass
-from typing import Optional, List
 
 
 @dataclass
@@ -31,7 +29,7 @@ def is_llm_available(config: LlmConfig) -> bool:
     return False
 
 
-def enhance_script_block(text: str, config: LlmConfig, system_prompt: Optional[str] = None) -> str:
+def enhance_script_block(text: str, config: LlmConfig, system_prompt: str | None = None) -> str:
     """
     Enhance a narrative block using a local LLM to improve fluency.
     Enforces strict rules: no inventing data, keep factual accuracy.
@@ -85,7 +83,7 @@ def _call_ollama(prompt: str, system_prompt: str, config: LlmConfig) -> str:
         return prompt
 
 
-def generate_intro_outro(doc_title: str, deadline: Optional[str], institution: Optional[str], config: LlmConfig) -> tuple[str, str]:
+def generate_intro_outro(doc_title: str, deadline: str | None, institution: str | None, config: LlmConfig) -> tuple[str, str]:
     """Generate professional intro and outro sentences using LLM (or fallback)."""
     if not config.enabled or not is_llm_available(config):
         # Fallback deterministic intro/outro

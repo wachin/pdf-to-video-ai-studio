@@ -1,11 +1,9 @@
 from __future__ import annotations
 
 import tempfile
-from pathlib import Path
-from functools import lru_cache
 from dataclasses import dataclass
-from typing import List, Optional, Dict, Any
-
+from functools import lru_cache
+from pathlib import Path
 
 try:
     from paddleocr import PaddleOCR
@@ -25,7 +23,7 @@ class OcrMissingDependencyError(OcrError):
 class OcrLine:
     """Single line of OCR text with bounding box and confidence."""
     text: str
-    bbox: List[List[float]]  # polygon points [[x1,y1], [x2,y2], ...]
+    bbox: list[list[float]]  # polygon points [[x1,y1], [x2,y2], ...]
     det_confidence: float    # detection confidence
     rec_confidence: float    # recognition confidence
 
@@ -33,7 +31,7 @@ class OcrLine:
 @dataclass
 class OcrResult:
     """OCR result for a page/image."""
-    lines: List[OcrLine]
+    lines: list[OcrLine]
     full_text: str
     page_index: int = 0
 
@@ -71,9 +69,9 @@ def _get_ocr(lang: str = "es"):
     )
 
 
-def _extract_structured(result) -> List[OcrLine]:
+def _extract_structured(result) -> list[OcrLine]:
     """Extract structured OCR data with bounding boxes and confidence scores."""
-    lines: List[OcrLine] = []
+    lines: list[OcrLine] = []
     
     for item in result or []:
         # PaddleOCR 3.x returns list of dicts with:

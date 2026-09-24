@@ -3,13 +3,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-import pytest
 from pdf_to_video_ai.formula_parser import (
-    extract_formulas_from_pdf,
-    extract_charts_from_pdf,
-    _looks_like_formula,
-    Formula,
     Chart,
+    Formula,
+    _looks_like_formula,
+    extract_charts_from_pdf,
+    extract_formulas_from_pdf,
 )
 
 

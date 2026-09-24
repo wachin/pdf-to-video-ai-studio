@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from typing import List, Optional
 
 from .document_model import Document, DocumentElement, Provenance
 
@@ -13,8 +12,8 @@ class ScriptBlock:
     heading: str | None = None
     block_type: str = "body"  # intro | body | table | closing
     estimated_duration_sec: float = 0.0
-    provenance: List[Provenance] = field(default_factory=list)
-    source_elements: List[str] = field(default_factory=list)  # element_ids
+    provenance: list[Provenance] = field(default_factory=list)
+    source_elements: list[str] = field(default_factory=list)  # element_ids
 
 
 def _is_table_line(line: str) -> bool:
@@ -22,7 +21,7 @@ def _is_table_line(line: str) -> bool:
     return s.startswith("|") and s.endswith("|")
 
 
-def _cells(line: str) -> List[str]:
+def _cells(line: str) -> list[str]:
     return [c.strip() for c in line.strip().strip("|").split("|")]
 
 
@@ -37,7 +36,7 @@ def _readable_url(url: str) -> str:
     return domain.replace(".", " punto ")
 
 
-def table_to_narration(table_lines: List[str]) -> str:
+def table_to_narration(table_lines: list[str]) -> str:
     rows = [
         _cells(l) for l in table_lines
         if _is_table_line(l) and not _is_separator(l)
@@ -106,23 +105,23 @@ def _estimate_duration(text: str, wps: float = 2.8) -> float:
     return max(1.0, words / wps)
 
 
-def document_to_script(doc: Document, max_seconds: int = 45, wps: float = 2.8) -> List[ScriptBlock]:
+def document_to_script(doc: Document, max_seconds: int = 45, wps: float = 2.8) -> list[ScriptBlock]:
     """
     Convert a canonical Document into ScriptBlocks with provenance.
     """
-    blocks: List[ScriptBlock] = []
-    current_texts: List[str] = []
+    blocks: list[ScriptBlock] = []
+    current_texts: list[str] = []
     current_heading: str | None = None
     current_type: str = "body"
-    current_provenance: List[Provenance] = []
-    current_element_ids: List[str] = []
+    current_provenance: list[Provenance] = []
+    current_element_ids: list[str] = []
 
     # Gather all element texts in order
-    elements: List[DocumentElement] = []
+    elements: list[DocumentElement] = []
     for page in doc.pages:
         elements.extend(page.elements)
 
-    table_buffer: List[DocumentElement] = []
+    table_buffer: list[DocumentElement] = []
 
     def flush_current():
         nonlocal current_texts, current_heading, current_type, current_provenance, current_element_ids
@@ -205,7 +204,7 @@ def document_to_script(doc: Document, max_seconds: int = 45, wps: float = 2.8) -
             ))
 
     # Time segmentation
-    segmented: List[ScriptBlock] = []
+    segmented: list[ScriptBlock] = []
     for blk in blocks:
         text = blk.text_narrated
         words = text.split()

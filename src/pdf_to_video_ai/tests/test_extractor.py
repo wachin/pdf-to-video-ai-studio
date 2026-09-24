@@ -4,9 +4,9 @@ from pathlib import Path
 sys_path_insert = str(Path(__file__).parent.parent)
 sys.path.insert(0, sys_path_insert)
 
-from pdf_to_video_ai.extractor_canonical import extract_pdf_to_document, _hash_file
-from pdf_to_video_ai.extractor_canonical_folder import extract_folder_to_document
 from pdf_to_video_ai.document_model import Document
+from pdf_to_video_ai.extractor_canonical import _hash_file, extract_pdf_to_document
+from pdf_to_video_ai.extractor_canonical_folder import extract_folder_to_document
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 

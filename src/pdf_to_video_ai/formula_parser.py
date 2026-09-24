@@ -6,9 +6,9 @@ and provides fallback detection for charts/figures.
 
 from __future__ import annotations
 
-from pathlib import Path
 from dataclasses import dataclass
-from typing import Optional
+from pathlib import Path
+
 import pymupdf4llm
 
 
@@ -16,7 +16,7 @@ import pymupdf4llm
 class Formula:
     """Mathematical formula extracted from document."""
     latex: str
-    bbox: Optional[tuple[float, float, float, float]] = None
+    bbox: tuple[float, float, float, float] | None = None
     page_number: int = 0
     source_file: str = ""
     confidence: float = 1.0
@@ -26,11 +26,11 @@ class Formula:
 class Chart:
     """Chart or graph detected in document."""
     caption: str = ""
-    bbox: Optional[tuple[float, float, float, float]] = None
+    bbox: tuple[float, float, float, float] | None = None
     page_number: int = 0
     source_file: str = ""
     chart_type: str = "unknown"  # bar, line, pie, etc.
-    image_path: Optional[str] = None
+    image_path: str | None = None
 
 
 def extract_formulas_from_pdf(pdf_path: Path) -> list[Formula]:
@@ -70,7 +70,7 @@ def extract_formulas_from_pdf(pdf_path: Path) -> list[Formula]:
                             source_file=str(pdf_path),
                         ))
 
-    except Exception as e:
+    except Exception:
         # Graceful degradation
         pass
 
@@ -170,7 +170,7 @@ def _looks_like_formula(text: str) -> bool:
     return False
 
 
-def save_chart_image(pdf_path: Path, bbox: tuple, page_num: int, output_dir: Path) -> Optional[Path]:
+def save_chart_image(pdf_path: Path, bbox: tuple, page_num: int, output_dir: Path) -> Path | None:
     """Extract chart image from PDF page.
 
     Uses PyMuPDF to render the region specified by bbox.

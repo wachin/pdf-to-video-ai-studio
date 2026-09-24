@@ -4,11 +4,11 @@ import hashlib
 from pathlib import Path
 
 from docx import Document as DocxDocument
+from docx.oxml.ns import qn
 from docx.table import Table
 from docx.text.paragraph import Paragraph
-from docx.oxml.ns import qn
 
-from .document_model import Document, Page, DocumentElement, Provenance
+from .document_model import Document, DocumentElement, Page, Provenance
 
 
 def _hash_file(path: Path) -> str:

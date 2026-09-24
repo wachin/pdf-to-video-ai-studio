@@ -15,12 +15,12 @@ Cache invalidation occurs when:
 
 from __future__ import annotations
 
-import json
 import hashlib
-import pickle
-from pathlib import Path
-from typing import Any, Optional
+import json
 from dataclasses import dataclass, field
+from datetime import UTC
+from pathlib import Path
+from typing import Any
 
 
 @dataclass
@@ -150,9 +150,9 @@ class CacheManager:
 
     def invalidate(
         self,
-        input_hash: Optional[str] = None,
-        config_hash: Optional[str] = None,
-        operation: Optional[str] = None,
+        input_hash: str | None = None,
+        config_hash: str | None = None,
+        operation: str | None = None,
     ) -> int:
         """Invalidate cache entries matching criteria.
 
@@ -196,8 +196,8 @@ class CacheManager:
 
 def _now_iso() -> str:
     """Return current timestamp as ISO string."""
-    from datetime import datetime, timezone
-    return datetime.now(timezone.utc).isoformat()
+    from datetime import datetime
+    return datetime.now(UTC).isoformat()
 
 
 # Global cache instance (lazy initialization)

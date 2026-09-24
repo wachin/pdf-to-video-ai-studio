@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import json
 import subprocess
-from pathlib import Path
 from dataclasses import dataclass
-from typing import List, Optional
+from pathlib import Path
 
 
 def _get_audio_duration(audio_path: Path) -> float:
@@ -29,7 +28,7 @@ HORIZONTAL = Orientation("horizontal", 1920, 1080)
 
 def assemble_video(slides_dir: Path, audio_dir: Path, output_path: Path,
                    orientation: Orientation = VERTICAL,
-                   srt_path: Optional[Path] = None) -> Path:
+                   srt_path: Path | None = None) -> Path:
     """Assemble video with proper synchronization: each slide duration matches its audio block."""
     audio_files = sorted(audio_dir.glob("audio_*.mp3"))
     if not audio_files:
@@ -115,8 +114,8 @@ def assemble_video(slides_dir: Path, audio_dir: Path, output_path: Path,
 
 def assemble_both_orientations(slides_dir: Path, audio_dir: Path,
                                base_output: Path,
-                               orientations: Optional[List[Orientation]] = None,
-                               srt_path: Optional[Path] = None) -> List[Path]:
+                               orientations: list[Orientation] | None = None,
+                               srt_path: Path | None = None) -> list[Path]:
     if orientations is None:
         orientations = [VERTICAL, HORIZONTAL]
     outputs = []

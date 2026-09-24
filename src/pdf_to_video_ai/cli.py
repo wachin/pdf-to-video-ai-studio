@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import argparse
-import sys
 import os
+import sys
 from pathlib import Path
 
 from .config import load_config
@@ -55,7 +55,12 @@ def cmd_lote(args: argparse.Namespace) -> None:
 def cmd_validar(args: argparse.Namespace) -> None:
     carpeta = Path(args.carpeta)
     cfg = load_config(Path(args.config) if args.config else None)
-    from .validation import validate_document, validate_script, validate_script_facts, write_validation_report
+    from .validation import (
+        validate_document,
+        validate_script,
+        validate_script_facts,
+        write_validation_report,
+    )
 
     salida = Path(args.salida) if hasattr(args, 'salida') and args.salida else carpeta.parent / "salidas" / carpeta.name
     doc_json = salida / "document.json"
@@ -82,7 +87,6 @@ def cmd_version(_args: argparse.Namespace) -> None:
 
 def main() -> None:
     # First pass: parse --lang before full initialization
-    import os
     pre_parser = argparse.ArgumentParser(add_help=False)
     pre_parser.add_argument("--lang", help=argparse.SUPPRESS)
     pre_parser.add_argument("-h", "--help", action="store_true", dest="show_help")

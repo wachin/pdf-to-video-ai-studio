@@ -2,16 +2,15 @@ from __future__ import annotations
 
 import hashlib
 import re
-import tempfile
 from pathlib import Path
-from typing import List
 
 import pymupdf
 import pymupdf4llm
 
-from .document_model import Document, Page, DocumentElement, Provenance
-from .ocr import ocr_pagina_pdf, ocr_disponible, OcrResult
 from .config import Config
+from .document_model import Document, DocumentElement, Page, Provenance
+from .formula_parser import extract_charts_from_pdf, extract_formulas_from_pdf
+from .ocr import OcrResult, ocr_disponible, ocr_pagina_pdf
 
 
 def _hash_file(path: Path) -> str:
@@ -217,6 +216,66 @@ def extract_pdf_to_document(pdf_path: Path, config: Config = None) -> Document:
                 elem_id += 1
 
         doc.pages.append(page_obj)
+
+    # Extract formulas and charts (Phase 7)
+    try:
+        formulas = extract_formulas_from_pdf(pdf_path)
+        for formula in formulas:
+            page_num = formula.page_number
+            # Find the correct page or add to last page
+            target_page = None
+            for p in doc.pages:
+                if p.page_number == page_num:
+                    target_page = p
+                    break
+            if target_page is None and doc.pages:
+                target_page = doc.pages[-1]
+            if target_page:
+                target_page.elements.append(DocumentElement(
+                    element_id=f"p{page_num:03d}-e{len(target_page.elements)+1:03d}",
+                    element_type="Formula",
+                    text=f"${formula.latex}$" if not formula.latex.startswith("$") else formula.latex,
+                    provenance=Provenance(
+                        source_file=str(pdf_path),
+                        page_number=page_num,
+                        bbox=formula.bbox,
+                        extraction_method="pymupdf4llm",
+                        engine="pymupdf4llm",
+                        confidence=1.0,
+                    ),
+                    metadata={"formula_type": "latex"},
+                ))
+    except Exception as e:
+        doc.warnings.append(f"Formula extraction failed: {e}")
+
+    try:
+        charts = extract_charts_from_pdf(pdf_path)
+        for chart in charts:
+            page_num = chart.page_number
+            target_page = None
+            for p in doc.pages:
+                if p.page_number == page_num:
+                    target_page = p
+                    break
+            if target_page is None and doc.pages:
+                target_page = doc.pages[-1]
+            if target_page:
+                target_page.elements.append(DocumentElement(
+                    element_id=f"p{page_num:03d}-e{len(target_page.elements)+1:03d}",
+                    element_type="Chart",
+                    text=f"[{chart.chart_type.upper()} CHART]",
+                    provenance=Provenance(
+                        source_file=str(pdf_path),
+                        page_number=page_num,
+                        bbox=chart.bbox,
+                        extraction_method="pymupdf4llm",
+                        engine="pymupdf4llm",
+                        confidence=0.8,
+                    ),
+                    metadata={"chart_type": chart.chart_type},
+                ))
+    except Exception as e:
+        doc.warnings.append(f"Chart extraction failed: {e}")
 
     src.close()
     return doc

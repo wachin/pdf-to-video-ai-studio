@@ -3,8 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-import pytest
-from pdf_to_video_ai.document_model import Document, Page, DocumentElement, Provenance
+from pdf_to_video_ai.document_model import Document, DocumentElement, Page, Provenance
 
 
 class TestDocumentModel:

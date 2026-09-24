@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import json
 import re
-from pathlib import Path
 from dataclasses import dataclass
-from typing import List, Dict, Any, Optional
+from pathlib import Path
 
 
 @dataclass
@@ -12,7 +11,7 @@ class ValidationIssue:
     level: str  # "error", "warning", "info"
     code: str
     message: str
-    element_ids: Optional[List[str]] = None
+    element_ids: list[str] | None = None
 
 
 # Normalized factual values are compared against the canonical document text.
@@ -40,7 +39,7 @@ REQUIRED_FIELDS = [
 ]
 
 
-def validate_document(doc_json_path: Path) -> List[ValidationIssue]:
+def validate_document(doc_json_path: Path) -> list[ValidationIssue]:
     """Validate that the extracted document contains required scholarship info."""
     issues = []
     try:
@@ -96,7 +95,7 @@ def validate_document(doc_json_path: Path) -> List[ValidationIssue]:
     return issues
 
 
-def validate_script(script_json_path: Path) -> List[ValidationIssue]:
+def validate_script(script_json_path: Path) -> list[ValidationIssue]:
     """Validate the generated script for issues."""
     issues = []
     try:
@@ -162,14 +161,14 @@ def _normalize_dates(text: str) -> set[tuple[int, int, int | None]]:
 def validate_script_facts(
     script_json_path: Path,
     doc_json_path: Path,
-) -> List[ValidationIssue]:
+) -> list[ValidationIssue]:
     """Verify that factual values in the script come from the document.
 
     Checks amounts, URLs and dates. Any script fact not present in the
     canonical document is reported as an error so unsupported claims can be
     detected before publishing.
     """
-    issues: List[ValidationIssue] = []
+    issues: list[ValidationIssue] = []
     try:
         blocks = json.loads(script_json_path.read_text(encoding="utf-8"))
     except Exception as e:
@@ -219,7 +218,7 @@ def validate_script_facts(
     return issues
 
 
-def write_validation_report(issues: List[ValidationIssue], output_path: Path) -> None:
+def write_validation_report(issues: list[ValidationIssue], output_path: Path) -> None:
     """Write validation report as JSON and human-readable summary."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
 

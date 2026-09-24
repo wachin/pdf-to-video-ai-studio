@@ -3,11 +3,11 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
-from .document_model import Document, Page, DocumentElement, Provenance
+from .config import Config
+from .document_model import Document, DocumentElement, Page, Provenance
 from .extractor import html_a_md
 from .extractor_canonical import extract_pdf_to_document
 from .extractor_docx import extract_docx_to_document
-from .config import Config
 
 
 def _hash_file(path: Path) -> str:

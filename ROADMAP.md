@@ -3589,14 +3589,19 @@ Current status:
 [*] Modern document parsing (PaddleOCR 3.x + PP-StructureV3 path)
 [*] Robust table model (via markdownify table_infer_header)
 [*] Image-text extraction (PaddleOCR on extracted images)
-[ ] Chart/formula handling (formulas via pymupdf4llm, charts not handled)
+[*] Formula extraction via pymupdf4llm (formula_parser.py integrated)
+[*] Chart detection from pymupdf4llm boxes (Chart element type)
+[*] Formula/Chart dataclasses with provenance
+[*] Formula detection heuristic (_looks_like_formula)
+[*] Chart extraction and image saving (save_chart_image)
+[*] Pipeline integration (extractor_canonical.py + pipeline.py)
+[*] Benchmark suite (benchmark_ppstructure.py)
 [*] Deterministic validation (validation.py)
 [*] Actual-duration video composition (explicit segment durations)
 [*] Complete batch mode (lote command)
 [*] Complete validation command (validar command)
 [*] Optional local LLM (Ollama integration)
 [*] Full i18n (gettext/Babel, CLI --lang, PDF_TO_VIDEO_AI_LANG)
-[ ] Benchmark suite
 [*] Production acceptance suite (multiple test runs)
 ```
 

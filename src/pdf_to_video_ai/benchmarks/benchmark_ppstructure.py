@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Benchmark PP-StructureV3 against current extraction pipeline.
 
 Compares:
@@ -10,14 +9,11 @@ Compares:
 - Memory usage
 """
 
-from __future__ import annotations
-
+import json
 import time
 import tracemalloc
-import json
+from dataclasses import asdict, dataclass
 from pathlib import Path
-from dataclasses import dataclass, asdict
-from typing import Optional
 
 try:
     import paddleocr
@@ -27,7 +23,6 @@ except ImportError:
     PaddleOCR = None
 
 from pdf_to_video_ai.extractor_canonical import extract_pdf_to_document
-from pdf_to_video_ai.document_model import Document
 
 
 @dataclass

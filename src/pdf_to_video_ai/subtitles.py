@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import json
 import subprocess
-from pathlib import Path
 from dataclasses import dataclass
-from typing import List, Optional
+from pathlib import Path
 
 try:
     import pysrt
@@ -17,7 +16,7 @@ class SubtitleBlock:
     text: str
     start: float
     duration: float
-    source_elements: List[str] = None  # type: ignore
+    source_elements: list[str] = None  # type: ignore
 
 
 def get_audio_duration(audio_path: Path) -> float:
@@ -33,7 +32,7 @@ def get_audio_duration(audio_path: Path) -> float:
         return 0.0
 
 
-def _to_subrip_time(seconds: float) -> "pysrt.SubRipTime":
+def _to_subrip_time(seconds: float) -> pysrt.SubRipTime:
     """Convert seconds to pysrt SubRipTime."""
     if pysrt is None:
         raise RuntimeError("pysrt not installed")
@@ -41,7 +40,7 @@ def _to_subrip_time(seconds: float) -> "pysrt.SubRipTime":
     return pysrt.SubRipTime.from_ordinal(int(seconds * 1000))
 
 
-def write_srt(blocks: List[SubtitleBlock], output_path: Path) -> None:
+def write_srt(blocks: list[SubtitleBlock], output_path: Path) -> None:
     """Write SRT file using pysrt for robust formatting."""
     if pysrt is None:
         raise RuntimeError("pysrt not installed. Run: pip install pysrt")
@@ -62,7 +61,7 @@ def write_srt(blocks: List[SubtitleBlock], output_path: Path) -> None:
     subs.save(str(output_path), encoding="utf-8")
 
 
-def generate_subtitles_from_audio(audio_dir: Path, script_blocks: List, output_path: Path) -> List[SubtitleBlock]:
+def generate_subtitles_from_audio(audio_dir: Path, script_blocks: list, output_path: Path) -> list[SubtitleBlock]:
     """Generate subtitles using actual audio durations from files."""
     audio_files = sorted(audio_dir.glob("audio_*.mp3"))
     subtitles = []
@@ -84,7 +83,7 @@ def generate_subtitles_from_audio(audio_dir: Path, script_blocks: List, output_p
     return subtitles
 
 
-def generate_subtitles_from_word_boundaries(audio_dir: Path, script_blocks: List, output_path: Path) -> List[SubtitleBlock]:
+def generate_subtitles_from_word_boundaries(audio_dir: Path, script_blocks: list, output_path: Path) -> list[SubtitleBlock]:
     """Generate word-level subtitles using edge-tts WordBoundary data."""
     audio_files = sorted(audio_dir.glob("audio_*.mp3"))
     wb_files = sorted(audio_dir.glob("word_boundaries_*.json"))

@@ -3,8 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-import pytest
-from pdf_to_video_ai.cache import CacheManager, CacheKey, invalidate_all_caches
+from pdf_to_video_ai.cache import CacheKey, CacheManager, invalidate_all_caches
 
 
 class TestCacheManager:

@@ -1,14 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import List, Optional, Tuple
 
 
 @dataclass
 class Provenance:
     source_file: str
     page_number: int
-    bbox: Optional[Tuple[float, float, float, float]] = None
+    bbox: tuple[float, float, float, float] | None = None
     extraction_method: str = "native"
     engine: str = ""
     confidence: float = 1.0
@@ -29,8 +28,8 @@ class Page:
     width: float = 0.0
     height: float = 0.0
     source_file: str = ""
-    elements: List[DocumentElement] = field(default_factory=list)
-    rendered_image: Optional[str] = None
+    elements: list[DocumentElement] = field(default_factory=list)
+    rendered_image: str | None = None
     extraction_method: str = "native"
     confidence: float = 1.0
 
@@ -41,8 +40,8 @@ class Document:
     source_path: str
     source_hash: str = ""
     language: str = "es"
-    pages: List[Page] = field(default_factory=list)
+    pages: list[Page] = field(default_factory=list)
     metadata: dict = field(default_factory=dict)
     extraction_engine: str = ""
     extraction_engine_version: str = ""
-    warnings: List[str] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)

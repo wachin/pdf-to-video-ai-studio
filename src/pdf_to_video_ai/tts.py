@@ -1,24 +1,22 @@
 from __future__ import annotations
 
-import asyncio
 import hashlib
 import json
-from pathlib import Path
 from dataclasses import dataclass
-from typing import List, Tuple
+from pathlib import Path
 
 try:
     import edge_tts
 except Exception:
     edge_tts = None
 
-from .cache import CacheManager, CacheKey
+from .cache import CacheKey, CacheManager
 
 
 @dataclass
 class TTSResult:
     audio_path: Path
-    word_boundaries: List[dict]
+    word_boundaries: list[dict]
 
 
 def _tts_cache_key(text: str, voice: str, rate: str, volume: str) -> str:

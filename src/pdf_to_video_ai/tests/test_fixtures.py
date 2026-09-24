@@ -7,8 +7,8 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from pdf_to_video_ai.extractor_canonical import extract_pdf_to_document
 from pdf_to_video_ai.document_model import Document
+from pdf_to_video_ai.extractor_canonical import extract_pdf_to_document
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 

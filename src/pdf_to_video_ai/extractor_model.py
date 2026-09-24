@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import hashlib
 from pathlib import Path
-from typing import List
 
-from .document_model import Document, Page, DocumentElement, Provenance
+from .document_model import Document, DocumentElement, Page, Provenance
 from .extractor import extract_folder
 
 

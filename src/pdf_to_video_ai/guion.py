@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import List
 
 
 @dataclass
@@ -18,7 +17,7 @@ def _is_table_line(line: str) -> bool:
     return s.startswith("|") and s.endswith("|")
 
 
-def _cells(line: str) -> List[str]:
+def _cells(line: str) -> list[str]:
     return [c.strip() for c in line.strip().strip("|").split("|")]
 
 
@@ -33,7 +32,7 @@ def _readable_url(url: str) -> str:
     return domain.replace(".", " punto ")
 
 
-def table_to_narration(table_lines: List[str]) -> str:
+def table_to_narration(table_lines: list[str]) -> str:
     rows = [
         _cells(l) for l in table_lines
         if _is_table_line(l) and not _is_separator(l)
@@ -102,14 +101,14 @@ def _estimate_duration(text: str, wps: float = 2.8) -> float:
     return max(1.0, words / wps)
 
 
-def markdown_to_script(md: str, max_seconds: int = 45, wps: float = 2.8) -> List[ScriptBlock]:
-    blocks: List[ScriptBlock] = []
-    current_texts: List[str] = []
+def markdown_to_script(md: str, max_seconds: int = 45, wps: float = 2.8) -> list[ScriptBlock]:
+    blocks: list[ScriptBlock] = []
+    current_texts: list[str] = []
     current_heading: str | None = None
     current_type: str = "body"
 
     lines = md.splitlines()
-    table_buffer: List[str] = []
+    table_buffer: list[str] = []
 
     def flush_current():
         nonlocal current_texts, current_heading, current_type
@@ -171,7 +170,7 @@ def markdown_to_script(md: str, max_seconds: int = 45, wps: float = 2.8) -> List
             ))
 
     # Time segmentation
-    segmented: List[ScriptBlock] = []
+    segmented: list[ScriptBlock] = []
     for blk in blocks:
         text = blk.text_narrated
         words = text.split()
