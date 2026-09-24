@@ -11,6 +11,7 @@ from .config import Config
 from .document_model import Document, DocumentElement, Page, Provenance
 from .formula_parser import extract_charts_from_pdf, extract_formulas_from_pdf
 from .ocr import OcrResult, ocr_disponible, ocr_pagina_pdf
+from .page_classifier import classify_page_type, evaluate_page_quality
 
 
 def _hash_file(path: Path) -> str:
@@ -90,19 +91,39 @@ def extract_pdf_to_document(pdf_path: Path, config: Config = None) -> Document:
         force_text=True,
     )
 
-    # Check which pages need OCR (low text content)
+    # Page-level routing and quality scoring
     paginas_con_poco_texto = []
+    paginas_con_baja_calidad = []
     for chunk in chunks:
         meta = chunk.get("metadata", {})
         page_num = meta.get("page_number", 1)
         text = chunk.get("text", "")
+        
+        # Classify page type and evaluate quality
+        page_type = classify_page_type(
+            text=text,
+            images_count=len(chunk.get("images", [])),
+            tables_count=len([b for b in chunk.get("boxes", []) if b.get("class") == "table"]),
+            formulas_count=0,
+        )
+        quality = evaluate_page_quality(
+            text=text,
+            images_count=len(chunk.get("images", [])),
+            tables_count=len([b for b in chunk.get("boxes", []) if b.get("class") == "table"]),
+            formulas_count=0,
+        )
+        
+        # Track pages needing OCR or advanced parsing
         if _pagina_necesita_ocr(text):
             paginas_con_poco_texto.append(page_num)
+        if quality.score < 0.5 or page_type in ("image_heavy", "complex_layout"):
+            paginas_con_baja_calidad.append(page_num)
 
     # If OCR is enabled in config, available, and some pages need it, re-process those pages
     ocr_pages = set()
-    if config.ocr.habilitado and paginas_con_poco_texto and ocr_disponible():
-        for page_num in paginas_con_poco_texto:
+    if config.ocr.habilitado and (paginas_con_poco_texto or paginas_con_baja_calidad) and ocr_disponible():
+        pages_to_ocr = set(paginas_con_poco_texto) | set(paginas_con_baja_calidad)
+        for page_num in pages_to_ocr:
             pdf_page = src.load_page(page_num - 1)
             page_obj = _procesar_ocr_pagina(pdf_page, page_num, pdf_path)
             doc.pages.append(page_obj)
