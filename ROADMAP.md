@@ -2877,16 +2877,16 @@ salidas/
 
 ## Phase 3
 
-- [ ] Page-level routing works.
-- [ ] Simple pages avoid unnecessary OCR.
-- [ ] Image-only pages are detected.
-- [ ] Complex pages are routed to document parsing.
+- [*] Page-level routing works.
+- [*] Simple pages avoid unnecessary OCR.
+- [*] Image-only pages are detected.
+- [*] Complex pages are routed to document parsing.
 
 ## Phase 4
 
 - [*] PaddleOCR works without Tesseract.
 - [*] Current PaddleOCR 3.x API is used.
-- [ ] PP-StructureV3 is benchmarked.
+- [*] PP-StructureV3 is benchmarked.
 - [*] OCR provenance is stored (bounding boxes, confidence).
 
 ## Phase 5
