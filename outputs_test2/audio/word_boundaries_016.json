@@ -1,0 +1,352 @@
+[
+  {
+    "text": "2023-25",
+    "offset": 1000000,
+    "duration": 20625000
+  },
+  {
+    "text": "Start",
+    "offset": 22125000,
+    "duration": 3500000
+  },
+  {
+    "text": "of",
+    "offset": 25625000,
+    "duration": 1250000
+  },
+  {
+    "text": "picture",
+    "offset": 26875000,
+    "duration": 4000000
+  },
+  {
+    "text": "text",
+    "offset": 30875000,
+    "duration": 3500000
+  },
+  {
+    "text": "Multilateral",
+    "offset": 35000000,
+    "duration": 7000000
+  },
+  {
+    "text": "brFor-profit",
+    "offset": 42625000,
+    "duration": 6125000
+  },
+  {
+    "text": "Government",
+    "offset": 48750000,
+    "duration": 5125000
+  },
+  {
+    "text": "&",
+    "offset": 54125000,
+    "duration": 500000
+  },
+  {
+    "text": "Nonprofit",
+    "offset": 54625000,
+    "duration": 5000000
+  },
+  {
+    "text": "br23",
+    "offset": 60750000,
+    "duration": 7875000
+  },
+  {
+    "text": "%",
+    "offset": 68750000,
+    "duration": 4500000
+  },
+  {
+    "text": "brCivilian",
+    "offset": 73625000,
+    "duration": 7125000
+  },
+  {
+    "text": "br4",
+    "offset": 81250000,
+    "duration": 6500000
+  },
+  {
+    "text": "%",
+    "offset": 87750000,
+    "duration": 5125000
+  },
+  {
+    "text": "brPolitical",
+    "offset": 93000000,
+    "duration": 9000000
+  },
+  {
+    "text": "8",
+    "offset": 102000000,
+    "duration": 2500000
+  },
+  {
+    "text": "%",
+    "offset": 104500000,
+    "duration": 5250000
+  },
+  {
+    "text": "brRisk",
+    "offset": 109875000,
+    "duration": 6750000
+  },
+  {
+    "text": "Military",
+    "offset": 116625000,
+    "duration": 4875000
+  },
+  {
+    "text": "br6",
+    "offset": 124250000,
+    "duration": 6875000
+  },
+  {
+    "text": "%",
+    "offset": 131125000,
+    "duration": 5250000
+  },
+  {
+    "text": "brHealthcare",
+    "offset": 137000000,
+    "duration": 7500000
+  },
+  {
+    "text": "brPolicy",
+    "offset": 145125000,
+    "duration": 7625000
+  },
+  {
+    "text": "br12",
+    "offset": 153375000,
+    "duration": 6750000
+  },
+  {
+    "text": "%",
+    "offset": 160125000,
+    "duration": 5375000
+  },
+  {
+    "text": "brEconomic",
+    "offset": 166000000,
+    "duration": 8250000
+  },
+  {
+    "text": "br7",
+    "offset": 175375000,
+    "duration": 6625000
+  },
+  {
+    "text": "%",
+    "offset": 182000000,
+    "duration": 5000000
+  },
+  {
+    "text": "Development",
+    "offset": 187000000,
+    "duration": 4750000
+  },
+  {
+    "text": "brConsulting",
+    "offset": 192625000,
+    "duration": 7750000
+  },
+  {
+    "text": "br10",
+    "offset": 201000000,
+    "duration": 5250000
+  },
+  {
+    "text": "%",
+    "offset": 206250000,
+    "duration": 5125000
+  },
+  {
+    "text": "9",
+    "offset": 211375000,
+    "duration": 2250000
+  },
+  {
+    "text": "%",
+    "offset": 213625000,
+    "duration": 5625000
+  },
+  {
+    "text": "brFinance",
+    "offset": 219625000,
+    "duration": 8375000
+  },
+  {
+    "text": "Environment",
+    "offset": 228000000,
+    "duration": 5875000
+  },
+  {
+    "text": "bror",
+    "offset": 235000000,
+    "duration": 2125000
+  },
+  {
+    "text": "Ag",
+    "offset": 237125000,
+    "duration": 2500000
+  },
+  {
+    "text": "br10",
+    "offset": 243125000,
+    "duration": 7000000
+  },
+  {
+    "text": "%",
+    "offset": 250125000,
+    "duration": 5375000
+  },
+  {
+    "text": "8",
+    "offset": 255500000,
+    "duration": 2375000
+  },
+  {
+    "text": "%",
+    "offset": 257875000,
+    "duration": 5500000
+  },
+  {
+    "text": "brTechnology",
+    "offset": 264000000,
+    "duration": 8625000
+  },
+  {
+    "text": "Humanitarian",
+    "offset": 272625000,
+    "duration": 8000000
+  },
+  {
+    "text": "bror",
+    "offset": 281250000,
+    "duration": 2250000
+  },
+  {
+    "text": "AI",
+    "offset": 283500000,
+    "duration": 1500000
+  },
+  {
+    "text": "Policy",
+    "offset": 285000000,
+    "duration": 3750000
+  },
+  {
+    "text": "Response",
+    "offset": 288750000,
+    "duration": 5125000
+  },
+  {
+    "text": "brNot",
+    "offset": 294375000,
+    "duration": 5000000
+  },
+  {
+    "text": "included",
+    "offset": 299875000,
+    "duration": 5000000
+  },
+  {
+    "text": "br3",
+    "offset": 306375000,
+    "duration": 5625000
+  },
+  {
+    "text": "%",
+    "offset": 312250000,
+    "duration": 4500000
+  },
+  {
+    "text": "of",
+    "offset": 316750000,
+    "duration": 1375000
+  },
+  {
+    "text": "graduates",
+    "offset": 318250000,
+    "duration": 4250000
+  },
+  {
+    "text": "went",
+    "offset": 322500000,
+    "duration": 2375000
+  },
+  {
+    "text": "bron",
+    "offset": 326000000,
+    "duration": 2125000
+  },
+  {
+    "text": "to",
+    "offset": 328125000,
+    "duration": 1250000
+  },
+  {
+    "text": "further",
+    "offset": 329375000,
+    "duration": 3500000
+  },
+  {
+    "text": "study",
+    "offset": 332875000,
+    "duration": 3750000
+  },
+  {
+    "text": "br",
+    "offset": 337375000,
+    "duration": 4125000
+  },
+  {
+    "text": "End",
+    "offset": 342000000,
+    "duration": 1125000
+  },
+  {
+    "text": "of",
+    "offset": 343125000,
+    "duration": 1375000
+  },
+  {
+    "text": "picture",
+    "offset": 344500000,
+    "duration": 4125000
+  },
+  {
+    "text": "text",
+    "offset": 348625000,
+    "duration": 3500000
+  },
+  {
+    "text": "YOU",
+    "offset": 362000000,
+    "duration": 2125000
+  },
+  {
+    "text": "LEAVE",
+    "offset": 364125000,
+    "duration": 2125000
+  },
+  {
+    "text": "READY",
+    "offset": 366250000,
+    "duration": 3250000
+  },
+  {
+    "text": "TO",
+    "offset": 369500000,
+    "duration": 1875000
+  },
+  {
+    "text": "LEAD",
+    "offset": 371375000,
+    "duration": 2500000
+  }
+]

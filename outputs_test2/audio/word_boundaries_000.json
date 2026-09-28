@@ -1,0 +1,52 @@
+[
+  {
+    "text": "THE",
+    "offset": 1000000,
+    "duration": 1750000
+  },
+  {
+    "text": "WORLD",
+    "offset": 2750000,
+    "duration": 3500000
+  },
+  {
+    "text": "IS",
+    "offset": 6375000,
+    "duration": 1500000
+  },
+  {
+    "text": "CHANGING",
+    "offset": 7875000,
+    "duration": 5250000
+  },
+  {
+    "text": "WHAT",
+    "offset": 23000000,
+    "duration": 3125000
+  },
+  {
+    "text": "WILL",
+    "offset": 26125000,
+    "duration": 2375000
+  },
+  {
+    "text": "YOU",
+    "offset": 28500000,
+    "duration": 1625000
+  },
+  {
+    "text": "MAKE",
+    "offset": 30125000,
+    "duration": 2625000
+  },
+  {
+    "text": "OF",
+    "offset": 33000000,
+    "duration": 1875000
+  },
+  {
+    "text": "IT",
+    "offset": 35000000,
+    "duration": 1750000
+  }
+]

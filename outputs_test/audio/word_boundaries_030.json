@@ -1,0 +1,67 @@
+[
+  {
+    "text": "Early",
+    "offset": 1000000,
+    "duration": 2875000
+  },
+  {
+    "text": "January",
+    "offset": 3875000,
+    "duration": 5750000
+  },
+  {
+    "text": "Application",
+    "offset": 9625000,
+    "duration": 6625000
+  },
+  {
+    "text": "deadline",
+    "offset": 16250000,
+    "duration": 4125000
+  },
+  {
+    "text": "Mid-March",
+    "offset": 20375000,
+    "duration": 4750000
+  },
+  {
+    "text": "Decision",
+    "offset": 26375000,
+    "duration": 5000000
+  },
+  {
+    "text": "release",
+    "offset": 31375000,
+    "duration": 5250000
+  },
+  {
+    "text": "August",
+    "offset": 36625000,
+    "duration": 4250000
+  },
+  {
+    "text": "Classes",
+    "offset": 40875000,
+    "duration": 3500000
+  },
+  {
+    "text": "begin",
+    "offset": 44375000,
+    "duration": 4125000
+  },
+  {
+    "text": "Apply",
+    "offset": 57500000,
+    "duration": 4750000
+  },
+  {
+    "text": "eveNts",
+    "offset": 72750000,
+    "duration": 4125000
+  },
+  {
+    "text": "News",
+    "offset": 87750000,
+    "duration": 4500000
+  }
+]

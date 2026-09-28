@@ -33,7 +33,7 @@ def document_to_markdown(doc) -> str:
 
 def process_folder(carpeta: Path, salida_dir: Path, config: Config) -> Path:
     salida_dir.mkdir(parents=True, exist_ok=True)
-    doc = extract_folder_to_document(carpeta, config)
+    doc = extract_folder_to_document(carpeta, config, output_dir=salida_dir)
 
     # Persist canonical document as JSON for auditability
     doc_json = salida_dir / "document.json"
@@ -51,6 +51,7 @@ def process_folder(carpeta: Path, salida_dir: Path, config: Config) -> Path:
                 "source_file": p.source_file,
                 "extraction_method": p.extraction_method,
                 "confidence": p.confidence,
+                "rendered_image": p.rendered_image,
                 "elements": [
                     {
                         "element_id": e.element_id,
@@ -123,9 +124,28 @@ def process_folder(carpeta: Path, salida_dir: Path, config: Config) -> Path:
 
     slides_dir = salida_dir / "slides"
     slides_dir.mkdir(exist_ok=True)
+    
+    # Build page number -> rendered image mapping
+    page_images = {}
+    for page in doc.pages:
+        if page.rendered_image and Path(page.rendered_image).exists():
+            page_images[page.page_number] = Path(page.rendered_image)
+    
     for i, blk in enumerate(enhanced_blocks, 1):
         img_path = slides_dir / f"slide_{i:03d}.png"
-        render_slide(blk.text_narrated, img_path)
+        # Find background image from block's source elements
+        bg_image = None
+        if blk.source_elements:
+            # Get page number from first source element
+            for page in doc.pages:
+                for elem in page.elements:
+                    if elem.element_id in blk.source_elements:
+                        if page.page_number in page_images:
+                            bg_image = page_images[page.page_number]
+                            break
+                if bg_image:
+                    break
+        render_slide(blk.text_narrated, img_path, background_image=bg_image)
 
     audio_dir = salida_dir / "audio"
     audio_dir.mkdir(exist_ok=True)

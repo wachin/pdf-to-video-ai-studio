@@ -22,6 +22,21 @@ def _hash_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def _render_pdf_page_to_image(pdf_path: Path, page_num: int, output_dir: Path, dpi: int = 300) -> Path:
+    """Render a PDF page to a PNG image using PyMuPDF."""
+    import fitz
+    doc = fitz.open(str(pdf_path))
+    page = doc[page_num - 1]
+    # Render at high DPI for quality
+    mat = fitz.Matrix(dpi / 72, dpi / 72)
+    pix = page.get_pixmap(matrix=mat, alpha=False)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"page_{page_num:03d}.png"
+    pix.save(str(output_path))
+    doc.close()
+    return output_path
+
+
 def _pagina_necesita_ocr(texto: str, umbral_caracteres: int = 200) -> bool:
     """Determina si una página necesita OCR basándose en cantidad de texto extraído."""
     return len(texto.strip()) < umbral_caracteres
@@ -64,9 +79,11 @@ def _procesar_ocr_pagina(pdf_page, page_num: int, pdf_path: Path) -> Page:
     return page_obj
 
 
-def extract_pdf_to_document(pdf_path: Path, config: Config = None) -> Document:
+def extract_pdf_to_document(pdf_path: Path, config: Config = None, output_dir: Path = None) -> Document:
     if config is None:
         config = Config()
+    if output_dir is None:
+        output_dir = pdf_path.parent / "outputs" / pdf_path.stem / "pages"
     doc = Document(
         document_id=pdf_path.stem,
         source_path=str(pdf_path),
@@ -80,6 +97,17 @@ def extract_pdf_to_document(pdf_path: Path, config: Config = None) -> Document:
     except Exception as e:
         doc.warnings.append(f"Failed to open PDF: {e}")
         return doc
+
+    # Render all PDF pages as images for slide backgrounds (Option 3)
+    for page_num in range(1, src.page_count + 1):
+        try:
+            img_path = _render_pdf_page_to_image(pdf_path, page_num, output_dir)
+            # Store in a temporary dict to attach to pages later
+            if not hasattr(doc, '_page_images'):
+                doc._page_images = {}
+            doc._page_images[page_num] = img_path
+        except Exception as e:
+            doc.warnings.append(f"Failed to render page {page_num} as image: {e}")
 
     # First pass: try pymupdf4llm without OCR
     chunks = pymupdf4llm.to_markdown(
@@ -126,6 +154,9 @@ def extract_pdf_to_document(pdf_path: Path, config: Config = None) -> Document:
         for page_num in pages_to_ocr:
             pdf_page = src.load_page(page_num - 1)
             page_obj = _procesar_ocr_pagina(pdf_page, page_num, pdf_path)
+            # Add rendered image to OCR page too
+            if hasattr(doc, '_page_images') and page_num in doc._page_images:
+                page_obj.rendered_image = str(doc._page_images[page_num])
             doc.pages.append(page_obj)
             ocr_pages.add(page_num)
 
@@ -147,6 +178,7 @@ def extract_pdf_to_document(pdf_path: Path, config: Config = None) -> Document:
             height=0.0,
             source_file=str(pdf_path),
             extraction_method="pymupdf4llm",
+            rendered_image=str(doc._page_images.get(page_num)) if hasattr(doc, '_page_images') and page_num in doc._page_images else None,
         )
 
         if not text:

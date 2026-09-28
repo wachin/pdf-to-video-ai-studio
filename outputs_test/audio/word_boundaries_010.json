@@ -1,0 +1,612 @@
+[
+  {
+    "text": "East",
+    "offset": 1000000,
+    "duration": 2250000
+  },
+  {
+    "text": "Rock",
+    "offset": 3250000,
+    "duration": 2625000
+  },
+  {
+    "text": "Summit",
+    "offset": 5875000,
+    "duration": 3875000
+  },
+  {
+    "text": "4.2km",
+    "offset": 9750000,
+    "duration": 14500000
+  },
+  {
+    "text": "/",
+    "offset": 24250000,
+    "duration": 8000000
+  },
+  {
+    "text": "1",
+    "offset": 32750000,
+    "duration": 2750000
+  },
+  {
+    "text": "hour’s",
+    "offset": 35500000,
+    "duration": 3000000
+  },
+  {
+    "text": "walk",
+    "offset": 38500000,
+    "duration": 2625000
+  },
+  {
+    "text": "Housing",
+    "offset": 50750000,
+    "duration": 4750000
+  },
+  {
+    "text": "average",
+    "offset": 55500000,
+    "duration": 4000000
+  },
+  {
+    "text": "for",
+    "offset": 59500000,
+    "duration": 1750000
+  },
+  {
+    "text": "students",
+    "offset": 61250000,
+    "duration": 5500000
+  },
+  {
+    "text": "$1350",
+    "offset": 69625000,
+    "duration": 14000000
+  },
+  {
+    "text": "/",
+    "offset": 83625000,
+    "duration": 7500000
+  },
+  {
+    "text": "month",
+    "offset": 91125000,
+    "duration": 2625000
+  },
+  {
+    "text": "rent",
+    "offset": 93875000,
+    "duration": 2250000
+  },
+  {
+    "text": "plus",
+    "offset": 96375000,
+    "duration": 3000000
+  },
+  {
+    "text": "in-unit",
+    "offset": 99375000,
+    "duration": 3750000
+  },
+  {
+    "text": "laundry",
+    "offset": 103125000,
+    "duration": 4125000
+  },
+  {
+    "text": "gym",
+    "offset": 107875000,
+    "duration": 3375000
+  },
+  {
+    "text": "off-street",
+    "offset": 114000000,
+    "duration": 5750000
+  },
+  {
+    "text": "parking",
+    "offset": 119875000,
+    "duration": 4750000
+  },
+  {
+    "text": "and",
+    "offset": 126000000,
+    "duration": 1625000
+  },
+  {
+    "text": "a",
+    "offset": 128125000,
+    "duration": 500000
+  },
+  {
+    "text": "backyard",
+    "offset": 128625000,
+    "duration": 4125000
+  },
+  {
+    "text": "for",
+    "offset": 132750000,
+    "duration": 2125000
+  },
+  {
+    "text": "your",
+    "offset": 134875000,
+    "duration": 1875000
+  },
+  {
+    "text": "dog",
+    "offset": 136750000,
+    "duration": 3000000
+  },
+  {
+    "text": "Wag",
+    "offset": 149250000,
+    "duration": 2500000
+  },
+  {
+    "text": "more",
+    "offset": 151875000,
+    "duration": 2625000
+  },
+  {
+    "text": "1.5km",
+    "offset": 164625000,
+    "duration": 14625000
+  },
+  {
+    "text": "/",
+    "offset": 179250000,
+    "duration": 7500000
+  },
+  {
+    "text": "15",
+    "offset": 187125000,
+    "duration": 3750000
+  },
+  {
+    "text": "mins",
+    "offset": 190875000,
+    "duration": 2750000
+  },
+  {
+    "text": "walk",
+    "offset": 193625000,
+    "duration": 2625000
+  },
+  {
+    "text": "A",
+    "offset": 206125000,
+    "duration": 750000
+  },
+  {
+    "text": "dAy",
+    "offset": 207125000,
+    "duration": 2125000
+  },
+  {
+    "text": "iN",
+    "offset": 209250000,
+    "duration": 1250000
+  },
+  {
+    "text": "thE",
+    "offset": 210500000,
+    "duration": 1250000
+  },
+  {
+    "text": "lifE",
+    "offset": 211750000,
+    "duration": 3125000
+  },
+  {
+    "text": "Of",
+    "offset": 214875000,
+    "duration": 1875000
+  },
+  {
+    "text": "Hagan",
+    "offset": 216750000,
+    "duration": 2500000
+  },
+  {
+    "text": "Han",
+    "offset": 219250000,
+    "duration": 1125000
+  },
+  {
+    "text": "MPP",
+    "offset": 220375000,
+    "duration": 5125000
+  },
+  {
+    "text": "26",
+    "offset": 225625000,
+    "duration": 6375000
+  },
+  {
+    "text": "9:00 am",
+    "offset": 241875000,
+    "duration": 9875000
+  },
+  {
+    "text": "Wake",
+    "offset": 251750000,
+    "duration": 2375000
+  },
+  {
+    "text": "up",
+    "offset": 254125000,
+    "duration": 1625000
+  },
+  {
+    "text": "9:30-11:00 am",
+    "offset": 265500000,
+    "duration": 18125000
+  },
+  {
+    "text": "Head",
+    "offset": 283625000,
+    "duration": 2125000
+  },
+  {
+    "text": "to",
+    "offset": 285750000,
+    "duration": 1625000
+  },
+  {
+    "text": "Marx",
+    "offset": 287375000,
+    "duration": 2875000
+  },
+  {
+    "text": "Social",
+    "offset": 290250000,
+    "duration": 4125000
+  },
+  {
+    "text": "Science",
+    "offset": 294375000,
+    "duration": 3375000
+  },
+  {
+    "text": "Library",
+    "offset": 297750000,
+    "duration": 4750000
+  },
+  {
+    "text": "to",
+    "offset": 302625000,
+    "duration": 1750000
+  },
+  {
+    "text": "get",
+    "offset": 304375000,
+    "duration": 2125000
+  },
+  {
+    "text": "some",
+    "offset": 306500000,
+    "duration": 3125000
+  },
+  {
+    "text": "work",
+    "offset": 309625000,
+    "duration": 2875000
+  },
+  {
+    "text": "done",
+    "offset": 312500000,
+    "duration": 3000000
+  },
+  {
+    "text": "11:00 am-12:00 pm",
+    "offset": 325000000,
+    "duration": 19000000
+  },
+  {
+    "text": "Meeting",
+    "offset": 344000000,
+    "duration": 3250000
+  },
+  {
+    "text": "of",
+    "offset": 347250000,
+    "duration": 1500000
+  },
+  {
+    "text": "DESC",
+    "offset": 348750000,
+    "duration": 2875000
+  },
+  {
+    "text": "Development",
+    "offset": 355125000,
+    "duration": 6500000
+  },
+  {
+    "text": "Environment",
+    "offset": 362125000,
+    "duration": 6125000
+  },
+  {
+    "text": "Society",
+    "offset": 368750000,
+    "duration": 6250000
+  },
+  {
+    "text": "and",
+    "offset": 376125000,
+    "duration": 1875000
+  },
+  {
+    "text": "Climate",
+    "offset": 378250000,
+    "duration": 4375000
+  },
+  {
+    "text": "to",
+    "offset": 384250000,
+    "duration": 1500000
+  },
+  {
+    "text": "plan",
+    "offset": 385750000,
+    "duration": 2375000
+  },
+  {
+    "text": "trip",
+    "offset": 388125000,
+    "duration": 2250000
+  },
+  {
+    "text": "to",
+    "offset": 390875000,
+    "duration": 1125000
+  },
+  {
+    "text": "the",
+    "offset": 392000000,
+    "duration": 1125000
+  },
+  {
+    "text": "Millstone",
+    "offset": 393125000,
+    "duration": 4375000
+  },
+  {
+    "text": "nuclear",
+    "offset": 397500000,
+    "duration": 3875000
+  },
+  {
+    "text": "power",
+    "offset": 401375000,
+    "duration": 3125000
+  },
+  {
+    "text": "plant",
+    "offset": 404500000,
+    "duration": 3000000
+  },
+  {
+    "text": "in",
+    "offset": 407625000,
+    "duration": 875000
+  },
+  {
+    "text": "Connecticut",
+    "offset": 408500000,
+    "duration": 6125000
+  },
+  {
+    "text": "The",
+    "offset": 424125000,
+    "duration": 1625000
+  },
+  {
+    "text": "goal",
+    "offset": 425750000,
+    "duration": 2875000
+  },
+  {
+    "text": "is",
+    "offset": 428625000,
+    "duration": 1125000
+  },
+  {
+    "text": "to",
+    "offset": 429750000,
+    "duration": 1375000
+  },
+  {
+    "text": "better",
+    "offset": 431250000,
+    "duration": 3750000
+  },
+  {
+    "text": "understand",
+    "offset": 435000000,
+    "duration": 5875000
+  },
+  {
+    "text": "nuclear",
+    "offset": 440875000,
+    "duration": 4625000
+  },
+  {
+    "text": "infrastructure",
+    "offset": 445500000,
+    "duration": 7375000
+  },
+  {
+    "text": "and",
+    "offset": 452875000,
+    "duration": 1875000
+  },
+  {
+    "text": "understand",
+    "offset": 454750000,
+    "duration": 5750000
+  },
+  {
+    "text": "policy",
+    "offset": 460500000,
+    "duration": 3875000
+  },
+  {
+    "text": "ramifications",
+    "offset": 464375000,
+    "duration": 8875000
+  },
+  {
+    "text": "12:00-1:00 pm",
+    "offset": 483000000,
+    "duration": 12250000
+  },
+  {
+    "text": "Grab",
+    "offset": 495250000,
+    "duration": 2500000
+  },
+  {
+    "text": "lunch",
+    "offset": 497750000,
+    "duration": 2875000
+  },
+  {
+    "text": "with",
+    "offset": 501125000,
+    "duration": 2375000
+  },
+  {
+    "text": "friends",
+    "offset": 503500000,
+    "duration": 5125000
+  },
+  {
+    "text": "I’m",
+    "offset": 518750000,
+    "duration": 2625000
+  },
+  {
+    "text": "a",
+    "offset": 521375000,
+    "duration": 625000
+  },
+  {
+    "text": "big",
+    "offset": 522125000,
+    "duration": 1875000
+  },
+  {
+    "text": "fan",
+    "offset": 524000000,
+    "duration": 2500000
+  },
+  {
+    "text": "of",
+    "offset": 526500000,
+    "duration": 1500000
+  },
+  {
+    "text": "the",
+    "offset": 528000000,
+    "duration": 1000000
+  },
+  {
+    "text": "food",
+    "offset": 529000000,
+    "duration": 3125000
+  },
+  {
+    "text": "trucks",
+    "offset": 532125000,
+    "duration": 3625000
+  },
+  {
+    "text": "that",
+    "offset": 535750000,
+    "duration": 2250000
+  },
+  {
+    "text": "are",
+    "offset": 538625000,
+    "duration": 2250000
+  },
+  {
+    "text": "down",
+    "offset": 540875000,
+    "duration": 2375000
+  },
+  {
+    "text": "the",
+    "offset": 543250000,
+    "duration": 1125000
+  },
+  {
+    "text": "block",
+    "offset": 544375000,
+    "duration": 2250000
+  },
+  {
+    "text": "from",
+    "offset": 546625000,
+    "duration": 3000000
+  },
+  {
+    "text": "Jackson",
+    "offset": 549625000,
+    "duration": 4000000
+  },
+  {
+    "text": "buildings",
+    "offset": 553625000,
+    "duration": 4750000
+  },
+  {
+    "text": "Marx",
+    "offset": 568375000,
+    "duration": 3250000
+  },
+  {
+    "text": "Social",
+    "offset": 571625000,
+    "duration": 4250000
+  },
+  {
+    "text": "Science",
+    "offset": 575875000,
+    "duration": 3750000
+  },
+  {
+    "text": "Library",
+    "offset": 579625000,
+    "duration": 5250000
+  },
+  {
+    "text": "School",
+    "offset": 594750000,
+    "duration": 4125000
+  },
+  {
+    "text": "of",
+    "offset": 599000000,
+    "duration": 1875000
+  },
+  {
+    "text": "the",
+    "offset": 600875000,
+    "duration": 1250000
+  },
+  {
+    "text": "Environment",
+    "offset": 602125000,
+    "duration": 6375000
+  },
+  {
+    "text": "School",
+    "offset": 618125000,
+    "duration": 4125000
+  }
+]

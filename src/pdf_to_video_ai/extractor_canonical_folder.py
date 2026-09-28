@@ -18,7 +18,7 @@ def _hash_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def extract_folder_to_document(folder: Path, config: Config | None = None) -> Document:
+def extract_folder_to_document(folder: Path, config: Config | None = None, output_dir: Path | None = None) -> Document:
     if config is None:
         config = Config()
     # Aggregate multiple source files into a single Document with provenance
@@ -36,7 +36,7 @@ def extract_folder_to_document(folder: Path, config: Config | None = None) -> Do
             continue
         suffix = file_path.suffix.lower()
         if suffix == ".pdf":
-            doc = extract_pdf_to_document(file_path, config)
+            doc = extract_pdf_to_document(file_path, config, output_dir=output_dir / file_path.stem if output_dir else None)
         elif suffix == ".docx":
             doc = extract_docx_to_document(file_path)
         elif suffix in {".html", ".htm", ".txt"}:
