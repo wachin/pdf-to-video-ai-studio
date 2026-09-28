@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -29,7 +30,7 @@ HORIZONTAL = Orientation("horizontal", 1920, 1080)
 def assemble_video(slides_dir: Path, audio_dir: Path, output_path: Path,
                    orientation: Orientation = VERTICAL,
                    srt_path: Path | None = None) -> Path:
-    """Assemble video with proper synchronization: each slide duration matches its audio block."""
+    """Assemble video with proper synchronization using concat demuxer."""
     audio_files = sorted(audio_dir.glob("audio_*.mp3"))
     if not audio_files:
         raise RuntimeError("No audio files found")
@@ -41,80 +42,52 @@ def assemble_video(slides_dir: Path, audio_dir: Path, output_path: Path,
     if len(audio_files) != len(slides):
         raise RuntimeError(f"Mismatch: {len(audio_files)} audio files vs {len(slides)} slides")
 
-    cmd = ["ffmpeg", "-y"]
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmpdir_path = Path(tmpdir)
+        
+        slides_sorted = sorted(slides_dir.glob("slide_*.png"))
+        audio_sorted = sorted(audio_dir.glob("audio_*.mp3"))
+        durations = [_get_audio_duration(a) for a in audio_files]
+        
+        # Create concat list for videos (slides with durations)
+        with open(tmpdir_path / "concat_videos.txt", "w") as f:
+            for img, dur in zip(slides, durations):
+                f.write(f"file '{img.resolve()}'\n")
+                f.write(f"duration {dur}\n")
+            # Last entry without duration for concat demuxer
+            f.write(f"file '{slides[-1].resolve()}'\n")
+        
+        # Create concat list for audio
+        with open(tmpdir_path / "concat_audio.txt", "w") as f:
+            for audio in audio_files:
+                f.write(f"file '{audio.resolve()}'\n")
 
-    for i, img in enumerate(slides):
-        duration = _get_audio_duration(audio_files[i])
-        cmd.extend(["-loop", "1", "-framerate", "30", "-t", str(duration), "-i", str(img)])
+        vf = f"scale={orientation.width}:{orientation.height}:force_original_aspect_ratio=decrease,pad={orientation.width}:{orientation.height}:(ow-iw)/2:(oh-ih)/2"
+        if srt_path and srt_path.exists():
+            vf = f"subtitles='{srt_path.resolve()}',{vf}"
 
-    for audio_file in audio_files:
-        cmd.extend(["-i", str(audio_file)])
+        cmd = [
+            "ffmpeg", "-y", "-nostdin",
+            "-f", "concat", "-safe", "0", "-i", str(tmpdir_path / "concat_videos.txt"),
+            "-f", "concat", "-safe", "0", "-i", str(tmpdir_path / "concat_audio.txt"),
+            "-vf", vf,
+            "-c:v", "libx264", "-r", "30", "-pix_fmt", "yuv420p",
+            "-c:a", "aac", "-b:a", "192k",
+            "-shortest", str(output_path)
+        ]
 
-    n_slides = len(slides)
-    n_audio = len(audio_files)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    video_inputs = "".join(f"[{i}:v]" for i in range(n_slides))
-    audio_inputs = "".join(f"[{n_slides + i}:a]" for i in range(n_audio))
-
-    filter_parts = []
-    filter_parts.append(f"{video_inputs}concat=n={n_slides}:v=1:a=0[v]")
-    filter_parts.append(f"{audio_inputs}concat=n={n_audio}:v=0:a=1[a]")
-
-    vf = f"scale={orientation.width}:{orientation.height}:force_original_aspect_ratio=decrease,pad={orientation.width}:{orientation.height}:(ow-iw)/2:(oh-ih)/2"
-    if srt_path and srt_path.exists():
-        filter_parts.append(f"[v]subtitles='{srt_path.resolve()}',{vf}[vout]")
-    else:
-        filter_parts.append(f"[v]{vf}[vout]")
-
-    filter_complex = ";".join(filter_parts)
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    cmd = ["ffmpeg", "-y"]
-
-    for i, img in enumerate(slides):
-        duration = _get_audio_duration(audio_files[i])
-        cmd.extend(["-loop", "1", "-framerate", "30", "-t", str(duration), "-i", str(img)])
-
-    for audio_file in audio_files:
-        cmd.extend(["-i", str(audio_file)])
-
-    n_slides = len(slides)
-    n_audio = len(audio_files)
-
-    video_inputs = "".join(f"[{i}:v]" for i in range(n_slides))
-    audio_inputs = "".join(f"[{n_slides + i}:a]" for i in range(n_audio))
-
-    filter_parts = []
-    filter_parts.append(f"{video_inputs}concat=n={n_slides}:v=1:a=0[v]")
-    filter_parts.append(f"{audio_inputs}concat=n={n_audio}:v=0:a=1[a]")
-
-    vf = f"scale={orientation.width}:{orientation.height}:force_original_aspect_ratio=decrease,pad={orientation.width}:{orientation.height}:(ow-iw)/2:(oh-ih)/2"
-    if srt_path and srt_path.exists():
-        filter_parts.append(f"[v]subtitles='{srt_path.resolve()}',{vf}[vout]")
-    else:
-        filter_parts.append(f"[v]{vf}[vout]")
-
-    filter_complex = ";".join(filter_parts)
-
-    cmd.extend(["-filter_complex", filter_complex])
-    cmd.extend(["-map", "[vout]", "-map", "[a]"])
-    cmd.extend(["-c:v", "libx264", "-r", "30", "-pix_fmt", "yuv420p"])
-    cmd.extend(["-c:a", "aac", "-b:a", "192k"])
-    cmd.extend(["-shortest", str(output_path)])
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    if result.returncode != 0:
-        raise RuntimeError(f"FFmpeg error: {result.stderr}")
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if result.returncode != 0:
+            raise RuntimeError(f"FFmpeg error: {result.stderr}")
 
     return output_path
 
 
 def assemble_both_orientations(slides_dir: Path, audio_dir: Path,
                                base_output: Path,
-                               orientations: list[Orientation] | None = None,
+                               orientations: list | None = None,
                                srt_path: Path | None = None) -> list[Path]:
     if orientations is None:
         orientations = [VERTICAL, HORIZONTAL]
