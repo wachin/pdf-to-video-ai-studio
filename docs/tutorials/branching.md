@@ -78,6 +78,62 @@ git push -u origin option4-hybrid
 
 ---
 
+## 📖 **Explicación detallada de cada opción**
+
+Esta tabla te dice **qué hace cada rama** y **qué verás en el video** al probarla:
+
+| Rama | Qué cambia en el código | Qué verás en el video | Cuándo usarla |
+|------|------------------------|----------------------|---------------|
+| **option1-plain-layout** | Cambia `slides.py` para **centrar verticalmente** el texto, calcular altura real del bloque y usar toda la slide 1080×1920 | Texto centrado, ocupa toda la pantalla, sin espacios blancos arriba/abajo | ✅ **Ideal si quieres texto limpio y legible** |
+| **option2-extend-width** | Cambia dimensiones a **1920×1080 (horizontal)**, ajusta fuentes y márgenes | Video horizontal (estilo YouTube clásico), texto más ancho | ✅ Si el destino es YouTube/Facebook feed |
+| **option3-pdf-template** | Usa **página real del PDF como fondo** (renderiza con PyMuPDF), superpone narración encima | Se ve la página original del documento con el texto hablado encima | ✅ **La más profesional** - muestra el documento real |
+| **option4-hybrid** | Combina: página PDF a la izquierda + **texto OCR limpio** a la derecha | Dos paneles: imagen original + texto extraído legible | ✅ Para documentos escaneados o con poca calidad |
+
+### 🔬 Detalles técnicos por opción
+
+#### 🎯 **Opción 1 – Layout Simple Centrado** (`option1-plain-layout`)
+- **Archivo modificado**: `src/pdf_to_video_ai/slides.py`
+- **Qué hace**: 
+  1. Calcula la altura total del texto con `draw.textbbox()`
+  2. Centra verticalmente: `y_start = (1920 - text_height) // 2`
+  3. Ajusta `spacing` entre líneas para que quepa
+- **Resultado**: Tu narración aparece centrada en la pantalla, fácil de leer
+- **Ventaja**: Cambio mínimo, rápido, funciona con cualquier texto
+
+#### 🎯 **Opción 2 – Ancho Extendido** (`option2-extend-width`)
+- **Archivo modificado**: `src/pdf_to_video_ai/slides.py` + `video.py`
+- **Qué hace**:
+  1. Invierte dimensiones: `width=1920, height=1080`
+  2. Aumenta tamaño de fuente (ej: 48pt título, 32pt cuerpo)
+  3. Ajusta márgenes laterales
+- **Resultado**: Video 1920×1080 horizontal, texto más grande
+- **Ventaja**: Formato estándar YouTube, mejor en desktop
+
+#### 🎯 **Opción 3 – Plantilla PDF** (`option3-pdf-template`) ⭐ **RECOMENDADA**
+- **Archivos nuevos/modificados**: 
+  - `src/pdf_to_video_ai/slides.py` (nueva función `render_slide_with_pdf_bg`)
+  - `src/pdf_to_video_ai/extractor_canonical.py` (extrae imágenes de páginas)
+  - `src/pdf_to_video_ai/pipeline.py` (usa la nueva función)
+- **Qué hace**:
+  1. Renderiza cada página del PDF a PNG (300 DPI) con `PyMuPDF`
+  2. Guarda en `outputs/pages/page_001.png`, etc.
+  3. Al crear slide: usa la imagen como fondo + superpone texto narrado
+  4. Texto con semi-transparencia o caja de fondo para legibilidad
+- **Resultado**: **Se ve la página real del PDF** (tablas, firmas, logos) con tu narración encima
+- **Ventaja**: Video muestra exactamente el documento original, 100% fiel
+
+#### 🎯 **Opción 4 – Híbrido** (`option4-hybrid`)
+- **Archivos**: Combina opción 3 + OCR
+- **Qué hace**:
+  1. Detecta páginas con poca calidad (scanned, fotos)
+  2. Para esas: corre OCR (PaddleOCR) y extrae texto limpio
+  3. Crea slide: **izquierda** = imagen PDF original, **derecha** = texto OCR limpio
+  4. Para páginas nativas: usa opción 3 normal
+- **Resultado**: Lo mejor de los dos mundos
+- **Ventaja**: Documentos escaneados se leen perfecto + se ve la página
+
+---
+
 ## 🧪 Paso 2: Seguir cada rama y probar
 
 ### 1️⃣ Cambiar de rama
@@ -111,7 +167,7 @@ Cuando fusionas una rama en `main`, Git intenta **unir** los cambios. Si ambos b
 Cambios en main
 =======
 Cambios en option4-hybrid
->>>>>>> option4-hybrid
+>>>>>>> option1-plain-layout
 ```
 
 En ese caso, abre el archivo, elige la versión que deseas conservar, elimina los delimitadores (`<<<<<<<`, etc.) y guarda.
@@ -126,10 +182,10 @@ En ese caso, abre el archivo, elige la versión que deseas conservar, elimina lo
 git checkout main
 ```
 
-2️⃣ Merge de la rama que te gustó (ejemplo: `option4-hybrid`):
+2️⃣ Merge de la rama que te gustó (ejemplo: `option1-plain-layout`):
 
 ```bash
-git merge option4-hybrid
+git merge option1-plain-layout
 ```
 
 3️⃣ Revisa si hay conflictos y resuélvelos.
@@ -137,7 +193,7 @@ git merge option4-hybrid
 4️⃣ Haz el commit final si hubo cambios: 
 
 ```bash
-git commit -m "Agregar opción 4 – híbrido PDF + OCR"
+git commit -m "Agregar opci.n 4 . h.bri"
 ```
 
 5️⃣ Sube a GitHub:
